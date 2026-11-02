@@ -53,3 +53,42 @@ function atualize_coord(_instance){
 	_instance.x += (variable_instance_exists(_instance,"spdh")) ? _instance.spdh : 0
 	_instance.y += (variable_instance_exists(_instance,"spdv")) ? _instance.spdv : 0
 }
+
+function cam_trackmove(_cam,track_id){
+	_cam.x = track_id.x;
+	_cam.y = track_id.y-(track_id.sprite_height/2);
+}
+
+function cam_transition(_cam,coord,point_coord,spd,max_spd){
+	_cam.spdh = (!variable_instance_exists(_cam,"spdh")) ? 0 : _cam.spdh;
+	_cam.spdv = (!variable_instance_exists(_cam,"spdv")) ? 0 : _cam.spdv;
+	var cam_coord = (coord="y") ? _cam.y : _cam.x;
+	var distance = point_coord-cam_coord
+	if abs(distance) >= 1.5{
+		_cam.spdh += (coord="x") ? spd*sign(distance) : 0;
+		_cam.spdv += (coord="y") ? spd*sign(distance) : 0;
+		_cam.x += (coord="x") ? clamp(_cam.spdh,-max_spd,max_spd) : 0;
+		_cam.y += (coord="y") ? clamp(_cam.spdv,-max_spd,max_spd) : 0;
+	}else{
+		_cam.spdh = (coord="x") ? 0 : _cam.spdh;
+		_cam.spdv = (coord="y") ? 0 : _cam.spdv;
+		_cam.x = (coord="x") ? point_coord : _cam.x;
+		_cam.y = (coord="y") ? point_coord : _cam.y;
+	};
+}
+
+function cam_chatmove(_cam,track_id,chat_id,spd){
+	var _middle_x = track_id.x+((chat_id.x-track_id.x)/2);
+	cam_transition(_cam,"x",_middle_x,spd,1.5)
+	_cam.y = track_id.y-(track_id.sprite_height/2);
+}
+
+function cam_setcoord(_cam,_x,_y,transition,spd,max_spd){
+	if transition{
+		cam_transition(_cam,"x",_x,spd,max_spd);
+		cam_transition(_cam,"y",_y,spd,max_spd);
+	}else{
+		_cam.x = _x;
+		_cam.y = _y;
+	};
+}
