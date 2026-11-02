@@ -1,3 +1,8 @@
+get_keys();
+if !in_combat{
+	atualize_coord(obj_player);
+}
+
 with obj_npc{
 	if !variable_instance_exists(other,"collision_player"){
 		other.collision_player = false;
@@ -22,6 +27,7 @@ if collision_player{
 		if dialogue_n >= dialogue_len-1{
 			collision_player = false;
 			dialogue_n = 0;
+			combat_init();
 		}else{
 			dialogue_n += 1;
 		};

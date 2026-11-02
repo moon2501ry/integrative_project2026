@@ -4,3 +4,4 @@ if collision_player{
 	draw_sprite_ext(spr_dialogbox,-1,_x,_y,4,4,0,-1,1);
 	draw_text(_x,_y,dialogue[dialogue_n])
 }
+combat_gui()
