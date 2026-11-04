@@ -1,1 +1,1 @@
-combat_gui()
+combat_draw()
