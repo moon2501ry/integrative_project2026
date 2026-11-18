@@ -1,2 +1,3 @@
 dialogue_n = 0;
-in_combat = false
+in_combat = false;
+inchat = false;

@@ -1,4 +1,6 @@
 get_keys();
+
+if global.rooms[$ room_get_name(room)].type = "game"{ // Game Room
 if !in_combat{
 	atualize_coord(obj_player);
 }
@@ -40,3 +42,4 @@ if inchat{
 		};
 	};
 };
+}

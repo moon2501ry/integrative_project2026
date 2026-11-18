@@ -70,3 +70,10 @@ function combat(deck){
 	};
 	#endregion
 }
+
+function set_card(){
+	list_cards = [
+		{"Name":"Sócrates","Life":1350,"Attack":2330},
+		{"Name":"Tales de Mileto","Life":1230,"Attack":1350}
+	]	
+}

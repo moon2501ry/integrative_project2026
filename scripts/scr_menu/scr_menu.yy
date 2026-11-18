@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"gamepads_var",
+  "%Name":"scr_menu",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"gamepads_var",
+  "name":"scr_menu",
   "parent":{
     "name":"MultiType Filosofia",
     "path":"MultiType Filosofia.yyp",
